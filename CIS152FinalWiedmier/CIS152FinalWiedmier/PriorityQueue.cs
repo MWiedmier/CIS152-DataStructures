@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 /***************************************************************
-* Name        : queue
+* Name        : Priority Queue
 * Author      : Mandy Wiedmier
 * Created     : 02/22/2023
 * Edited      : 03/22/2023

@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/***************************************************************
+* Name        : DaysOfWeek
+* Author      : Mandy Wiedmier
+* Created      : 03/22/2023
+***************************************************************/
+
 namespace CIS152FinalWiedmier
 {
     public class DaysOfWeek
