@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /**************************************************************
-* Name : Singly Linked List Implementation
+* Name : CIS 152 Final Wiedmier
 * Author: Mandy Wiedmier
 * Created : 03/22/2023
 * Course: CIS 152 - Data Structure
