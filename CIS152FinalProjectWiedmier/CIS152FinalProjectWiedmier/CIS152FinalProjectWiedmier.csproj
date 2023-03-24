@@ -124,7 +124,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReservationFullException.cs" />
     <Compile Include="Models\DaysOfWeek.cs" />
+    <Compile Include="Models\InvalidDayException.cs" />
+    <Compile Include="Models\Node.cs" />
     <Compile Include="Models\PriorityQueue.cs" />
     <Compile Include="Models\queueEmptyException.cs" />
     <Compile Include="Models\Reservation.cs" />

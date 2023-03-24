@@ -1,31 +1,105 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model CIS152FinalProjectWiedmier.Models.PriorityQueue
+@{
+    Layout = null;
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> Lottery Numbers</title>
+</head>
+<body>
+    <h1>Restaurant Reservations</h1>
+    <form asp-action="Index" method="post">
+        <div asp-validation-summary="All"></div>
+
+        <div>
+            <label asp-for="Reservation.ReservationName">Name for Reservation: </label>
+            <input asp-for="Reservation.ReservationName" />
+        </div>
+        <div>
+            <label asp-for="Reservation.TypeOfReservation">Type of Reservation: </label>
+            <input asp-for="Reservation.TypeOfReservation" />
+        </div>
+        <div>
+            <label asp-for="Reservation.DayOfWeek">Day Preferred: </label>
+            <input asp-for="Reservation.DayOfWeek" />
+        </div>
+        <div>
+            <label asp-for="Reservation.NumOfPeople">Number of People: </label>
+            <input asp-for="Reservation.NumOfPeople" />
+        </div>
+        <div>
+            <label asp-for="Reservation.PhoneNumber">Phone Number: </label>
+            <input asp-for="Reservation.PhoneNumber" />
+        </div>
+        <button type="submit">Place Reservation</button>
+        <a asp-action="Index">Clear</a>
+    </form>
+
+    <p>@Model.</p>
+
+
+    <div>
+        <label>Name</label>
+        <input value="@ViewBag.RN" readonly />
+        <label>Priority</label>
+        <input value="@ViewBag.P" readonly />
+        <label>Day</label>
+        <input value="@ViewBag.DOW" readonly />
+        <label>People</label>
+        <input value="@ViewBag.NOP" readonly />
+        <label>Phone</label>
+        <input value="@ViewBag.PN" readonly />
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Reservation reservation in Model.P)
+            {
+                <tr>
+                    <td>@movie.Name</td>
+                    <td>@movie.Year</td>
+                    <td>@movie.Genre.Name</td>
+                    <td>@movie.Rating</td>
+                    <td>
+                        <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
+                        <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+
+</body>
+</html>
+
+@*/**************************************************************
+    * Name : PROGRAM NAME
+    * Author: Mandy Wiedmier
+    * Created : ##/##/2023
+    * Course: CIS 152 - Data Structure
+    * Version: 1.0
+    * OS: Windows 11
+    * IDE: Visual Studio 2019
+    * Copyright : This is my own original work
+    * based onspecifications issued by our instructor
+    * Description : An app that .... ADD HERE....
+    *            Input: ADD HERE XXX
+    *            Ouput: ADD HERE XXX
+    * Academic Honesty: I attest that this is my original work.
+    * I have not used unauthorized source code, either modified or
+    * unmodified. I have not given other fellow student(s) access
+    * to my program.
+    ***************************************************************/*@

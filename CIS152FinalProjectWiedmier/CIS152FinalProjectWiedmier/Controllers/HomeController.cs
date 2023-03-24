@@ -10,6 +10,11 @@ namespace CIS152FinalProjectWiedmier.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.RN = "";
+            ViewBag.P = "";
+            ViewBag.DOW = "";
+            ViewBag.NOP = 0;
+            ViewBag.PN = 0;
             return View();
         }
 
@@ -25,6 +30,6 @@ namespace CIS152FinalProjectWiedmier.Controllers
         //    ViewBag.Message = "Your contact page.";
 
         //    return View();
-        }
+        //}
     }
 }
