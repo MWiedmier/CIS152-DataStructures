@@ -19,6 +19,7 @@ namespace CIS152FinalProjectWiedmier.Models
         private int queueSize;
         private LinkedList<Node> pQueue;
         public const int MAX = 70;
+        private Node Head;
 
         /**************************************************************
         * Constructors
@@ -42,13 +43,14 @@ namespace CIS152FinalProjectWiedmier.Models
         * Input: 
         * Output: node newData
         ***************************************************************/
-        public Node newNode(int jobNumber, char priority)
+        public Node newNode(string name, string reservationType, string day, int people, int phonenumber)
         {
             Node newData = new Node();
-            //newData.jobNumber = jobNumber;
-            //newData.priority = priority;
-
-            //TODO add in parameters reservation
+            newData.data.ReservationName = name;
+            newData.data.TypeOfReservation = reservationType;
+            newData.data.DayOfWeek = day;
+            newData.data.NumOfPeople = people;
+            newData.data.PhoneNumber = phonenumber;
 
             return newData;
         }
@@ -184,68 +186,75 @@ namespace CIS152FinalProjectWiedmier.Models
 		* Input: Node head, int jobNum, char priority
 		* Output: 
 		***************************************************************/
-        //public void enqueue(Node head, Node incomingData)
-        //{
-        //    Node currentNode = head;
-        //    Node insertingData = incomingData;
-        //    int index = 0;
+        public void enqueue(Node head, Node incomingData)
+        {
+            Node currentNode = head;
+            Node insertingData = incomingData;
+            int index = 0;
 
-        //    //Node pointingData = pQueue.First.Value;
+            //Node pointingData = pQueue.First.Value;
+            if (pQueue.Count == 0) //If there are no elements in queue
+            {
+                pQueue.AddFirst(head);
+                queueSize++;
+            }
+            else
+            {
+                if (!checkPriority(currentNode.data.TypeOfReservation, insertingData.data.TypeOfReservation)) //If the inserted priority is greater than the starting node
+                {
+                    pQueue.AddBefore(pQueue.First, insertingData);
+                    queueSize++;
+                }
+                else //If the inserted data has a lesser prioirity
+                {
+                    if (pQueue.First.Next == null)//If there is only one node in the list
+                    {
+                        pQueue.AddAfter(pQueue.First, insertingData);
+                    }
+                    else//If there are more elements in the queue
+                    {
+                        foreach (Node data in pQueue)
+                        {
+                            index++;
+                            if (!checkPriority(data.data.TypeOfReservation, insertingData.data.TypeOfReservation))//If the inserted prioirity is GREATER than the current node
+                            {
+                                pQueue.AddBefore(pQueue.Find(data), insertingData);
+                                break;
+                            }
+                        }
+                        if (index == pQueue.Count)
+                        {
+                            pQueue.AddLast(insertingData);
+                        }
+                    }
+                }
+            }
+        }
 
-        //    if (!checkPriority(currentNode.priority, insertingData.priority)) //If the inserted priority is greater than the starting node
-        //    {
-        //        pQueue.AddBefore(pQueue.First, insertingData);
-        //        queueSize++;
-        //    }
-        //    else //If the inserted data has a lesser prioirity
-        //    {
-        //        if(pQueue.First.Next == null)//If there is only one node in the list
-        //        {
-        //            pQueue.AddAfter(pQueue.First, insertingData);
-        //        }
-        //        else//If there are more elements in the queue
-        //        {
-        //            foreach (Node data in pQueue)
-        //            {
-        //                index++;
-        //                if (!checkPriority(data.priority, insertingData.priority))//If the inserted prioirity is GREATER than the current node
-        //                {
-        //                    pQueue.AddBefore(pQueue.Find(data), insertingData);
-        //                    break;
-        //                }
-        //            }
-        //            if (index == pQueue.Count)
-        //            {
-        //                pQueue.AddLast(insertingData);
-        //            }
-        //        }
-        //    }
-        //}
+        //      /**************************************************************
+        //* Name: printQueue
+        //* Description: This method prints the elements of the queue. If queue is empty will throw an empty exception.
+        //* Input: 
+        //* Output: string queueString
+        //***************************************************************/
+        //      public string printQueue()
+        //      {
 
-  //      /**************************************************************
-		//* Name: printQueue
-		//* Description: This method prints the elements of the queue. If queue is empty will throw an empty exception.
-		//* Input: 
-		//* Output: string queueString
-		//***************************************************************/
-  //      public string printQueue()
-  //      {
-            
-  //          if (!this.isEmpty())
-  //          {
-  //              string queueString = "";
+        //          if (!this.isEmpty())
+        //          {
+        //              string queueString = "";
 
-  //              foreach (Node str in pQueue)
-  //              {
-  //                  queueString = queueString + "Job Number " + str.jobNumber + ", Job Priority " + str.priority + "\n";
-  //              }
-  //              return queueString;
-  //          }
-  //          else
-  //          {
-  //              throw new queueEmptyException();
-  //          }
-  //      }
+        //              foreach (Node str in pQueue)
+        //              {
+        //                  queueString = queueString + "Job Number " + str.jobNumber + ", Job Priority " + str.priority + "\n";
+        //              }
+        //              return queueString;
+        //          }
+        //          else
+        //          {
+        //              throw new queueEmptyException();
+        //          }
+        //      }
 
         /**************************************************************
 		* Name: printQueue
@@ -262,22 +271,7 @@ namespace CIS152FinalProjectWiedmier.Models
             }
 
 
-            //var nodeList = new List<Node>;
-            //if (!this.isEmpty())
-            //{
-            //    Node[]
-            //    Node nodeReturn;
-
-            //    foreach (Node str in pQueue)
-            //    {
-            //        nodeReturn = str;
-            //        return nodeReturn;
-            //    }
-            //}
-            //else
-            //{
-            //    throw new queueEmptyException();
-            //}
+            
         }
 
 

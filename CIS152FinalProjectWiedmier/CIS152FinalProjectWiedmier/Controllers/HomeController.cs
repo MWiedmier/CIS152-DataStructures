@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using CIS152FinalProjectWiedmier.Models;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace CIS152FinalProjectWiedmier.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
             ViewBag.RN = "";
@@ -15,21 +18,24 @@ namespace CIS152FinalProjectWiedmier.Controllers
             ViewBag.DOW = "";
             ViewBag.NOP = 0;
             ViewBag.PN = 0;
+
             return View();
         }
+        [HttpPost]
+        public IActionResult Index(PriorityQueue model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.enqueue(model.newNode(ViewBag.RN, ViewBag.P, ViewBag.DOW, ViewBag.NOP, ViewBag.PN));
+                return View(model);
+            }
+            else
+            {
+                ViewBag.Pay = 0; ViewBag.StudentName = ""; return View(model);
 
-        //public ActionResult About()
-        //{
-        //    ViewBag.Message = "Your application description page.";
+            }
+        }
 
-        //    return View();
-        //}
 
-        //public ActionResult Contact()
-        //{
-        //    ViewBag.Message = "Your contact page.";
-
-        //    return View();
-        //}
     }
 }

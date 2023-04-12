@@ -3,6 +3,25 @@
     Layout = null;
 }
 
+@*/**************************************************************
+    * Name : PROGRAM NAME
+    * Author: Mandy Wiedmier
+    * Created : ##/##/2023
+    * Course: CIS 152 - Data Structure
+    * Version: 1.0
+    * OS: Windows 11
+    * IDE: Visual Studio 2019
+    * Copyright : This is my own original work
+    * based onspecifications issued by our instructor
+    * Description : An app that .... ADD HERE....
+    *            Input: ADD HERE XXX
+    *            Ouput: ADD HERE XXX
+    * Academic Honesty: I attest that this is my original work.
+    * I have not used unauthorized source code, either modified or
+    * unmodified. I have not given other fellow student(s) access
+    * to my program.
+    ***************************************************************/*@
+
 <!DOCTYPE html>
 
 <html>
@@ -65,13 +84,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (Reservation reservation in Model.P)
+            @foreach (var reservation in Model.pq)
             {
                 <tr>
-                    <td>@movie.Name</td>
-                    <td>@movie.Year</td>
-                    <td>@movie.Genre.Name</td>
-                    <td>@movie.Rating</td>
+                    <td>@reservation.Name</td>
+                    <td>@reservation.Year</td>
+                    <td>@reservation.Genre.Name</td>
+                    <td>@reservation.Rating</td>
                     <td>
                         <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
                         <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Delete</a>
@@ -85,21 +104,3 @@
 </body>
 </html>
 
-@*/**************************************************************
-    * Name : PROGRAM NAME
-    * Author: Mandy Wiedmier
-    * Created : ##/##/2023
-    * Course: CIS 152 - Data Structure
-    * Version: 1.0
-    * OS: Windows 11
-    * IDE: Visual Studio 2019
-    * Copyright : This is my own original work
-    * based onspecifications issued by our instructor
-    * Description : An app that .... ADD HERE....
-    *            Input: ADD HERE XXX
-    *            Ouput: ADD HERE XXX
-    * Academic Honesty: I attest that this is my original work.
-    * I have not used unauthorized source code, either modified or
-    * unmodified. I have not given other fellow student(s) access
-    * to my program.
-    ***************************************************************/*@
