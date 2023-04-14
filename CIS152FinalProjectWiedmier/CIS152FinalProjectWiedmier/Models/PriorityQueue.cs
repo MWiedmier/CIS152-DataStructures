@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CIS152FinalProjectWiedmier.Models;
 
 
 /***************************************************************
@@ -43,7 +44,7 @@ namespace CIS152FinalProjectWiedmier.Models
         * Input: 
         * Output: node newData
         ***************************************************************/
-        public Node newNode(string name, string reservationType, string day, int people, int phonenumber)
+        public Node newNode(string name, string reservationType, string day, int people, string phonenumber)
         {
             Node newData = new Node();
             newData.data.ReservationName = name;
@@ -54,6 +55,31 @@ namespace CIS152FinalProjectWiedmier.Models
 
             return newData;
         }
+
+        /**************************************************************
+        * Name: priorityNumber
+        * Description: Compares the priority of queue items
+        * Input: 
+        * Output: bool
+        ***************************************************************/
+        public int priorityNumber(string priority)
+        {
+            int pNumber = 0;
+            if(priority.ToLower() == "vip")
+            {
+                pNumber = 3;
+            }
+            else if(priority.ToLower() == "party")
+            {
+                pNumber = 2;
+            }
+            else if(priority.ToLower() == "regular")
+            {
+                pNumber = 1;
+            }
+            return pNumber;
+        }
+
 
         /**************************************************************
         * Name: checkPriority
@@ -256,23 +282,18 @@ namespace CIS152FinalProjectWiedmier.Models
         //          }
         //      }
 
-        /**************************************************************
-		* Name: printQueue
-		* Description: This method prints the elements of the queue. If queue is empty will throw an empty exception.
-		* Input: 
-		* Output: string queueString
-		***************************************************************/
-        public List<Node> returnNodes(string tableFilter)
-        {
-            var nodeList = new List<Node>[MAX];
-            if(tableFilter.ToLower() == "all")
-            {
-                nodeList = DaysOfWeek.allReservations;
-            }
-
-
-            
-        }
+  //      /**************************************************************
+		//* Name: printQueue
+		//* Description: This method prints the elements of the queue. If queue is empty will throw an empty exception.
+		//* Input: 
+		//* Output: string queueString
+		//***************************************************************/
+  //      public List<Node> returnNodes(string tableFilter)
+  //      {
+  //          List<Node> nodeList = new List<Node>();
+  //          nodeList = DaysOfWeek.returnList(tableFilter);
+  //          return nodeList;
+  //      }
 
 
     }

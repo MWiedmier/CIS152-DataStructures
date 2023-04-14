@@ -135,5 +135,47 @@ namespace CIS152FinalProjectWiedmier.Models
                 throw new InvalidDayException();
             }
         }
+
+        public List<Node> returnList(string key)
+        {
+            List<Node> weekList = new List<Node>();
+            if (key.ToLower() == "monday")
+            {
+                weekList = mondayReservations;
+            }
+            else if (key.ToLower() == "tuesday")
+            {
+                weekList = tuesdayReservations;
+            }
+            else if (key.ToLower() == "wednesday")
+            {
+                weekList = wednesdayReservations;
+            }
+            else if (key.ToLower() == "thursday")
+            {
+                weekList = thursdayReservations;
+            }
+            else if (key.ToLower() == "friday")
+            {
+                weekList = fridayReservations;
+            }
+            else if (key.ToLower() == "saturday")
+            {
+                weekList = saturdayReservations;
+            }
+            else if (key.ToLower() == "sunday")
+            {
+                weekList = sundayReservations;
+            }
+            else if (key.ToLower() == "all")
+            {
+                weekList = allReservations;
+            }
+            else
+            {
+                throw new InvalidDayException();
+            }
+            return weekList;
+        }
     }
 }

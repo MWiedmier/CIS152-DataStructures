@@ -10,6 +10,7 @@ namespace CIS152FinalProjectWiedmier.Controllers
 {
     public class HomeController : Controller
     {
+        [Route ("/")]
         [HttpGet]
         public ActionResult Index()
         {
@@ -36,6 +37,13 @@ namespace CIS152FinalProjectWiedmier.Controllers
             }
         }
 
+        [HttpGet]
+        public ViewResult ReservationLists()
+        {
 
+            var model = new ReservationViewModel();
+            
+            return View(model);
+        }
     }
 }
