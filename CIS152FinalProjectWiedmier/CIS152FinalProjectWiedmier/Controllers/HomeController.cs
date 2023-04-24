@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CIS152FinalProjectWiedmier.Models;
-using Microsoft.AspNetCore.Mvc;
+using System.Web.Mvc;
+using System.Web.Mvc.Html;
+//using Microsoft.AspNetCore.Mvc;
 
 
 namespace CIS152FinalProjectWiedmier.Controllers
@@ -18,12 +20,12 @@ namespace CIS152FinalProjectWiedmier.Controllers
             ViewBag.P = "";
             ViewBag.DOW = "";
             ViewBag.NOP = 0;
-            ViewBag.PN = 0;
+            ViewBag.PN = "";
 
             return View();
         }
         [HttpPost]
-        public IActionResult Index(PriorityQueue model)
+        public ActionResult Index(PriorityQueue model)
         {
             if (ModelState.IsValid)
             {
@@ -42,7 +44,7 @@ namespace CIS152FinalProjectWiedmier.Controllers
         {
 
             var model = new ReservationViewModel();
-            
+
             return View(model);
         }
     }

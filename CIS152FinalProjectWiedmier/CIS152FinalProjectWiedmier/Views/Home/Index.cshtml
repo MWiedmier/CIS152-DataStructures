@@ -31,6 +31,7 @@
 </head>
 <body>
     <h1>Restaurant Reservations</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
     <form asp-action="Index" method="post">
         <div asp-validation-summary="All"></div>
 
@@ -61,43 +62,43 @@
     @*<p>@Model.</p>
 
 
-    <div>
-        <label>Name</label>
-        <input value="@ViewBag.RN" readonly />
-        <label>Priority</label>
-        <input value="@ViewBag.P" readonly />
-        <label>Day</label>
-        <input value="@ViewBag.DOW" readonly />
-        <label>People</label>
-        <input value="@ViewBag.NOP" readonly />
-        <label>Phone</label>
-        <input value="@ViewBag.PN" readonly />
-    </div>
+        <div>
+            <label>Name</label>
+            <input value="@ViewBag.RN" readonly />
+            <label>Priority</label>
+            <input value="@ViewBag.P" readonly />
+            <label>Day</label>
+            <input value="@ViewBag.DOW" readonly />
+            <label>People</label>
+            <input value="@ViewBag.NOP" readonly />
+            <label>Phone</label>
+            <input value="@ViewBag.PN" readonly />
+        </div>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Year</th>
-                <th>Genre</th>
-                <th>Rating</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var reservation in Model.pq)
-            {
+        <table class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td>@reservation.Name</td>
-                    <td>@reservation.Year</td>
-                    <td>@reservation.Genre.Name</td>
-                    <td>@reservation.Rating</td>
-                    <td>
-                        <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
-                        <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Delete</a>
-                    </td>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                    <th>Rating</th>
                 </tr>
-            }
-        </tbody>*@
+            </thead>
+            <tbody>
+                @foreach (var reservation in Model.pq)
+                {
+                    <tr>
+                        <td>@reservation.Name</td>
+                        <td>@reservation.Year</td>
+                        <td>@reservation.Genre.Name</td>
+                        <td>@reservation.Rating</td>
+                        <td>
+                            <a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Edit</a>
+                            <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.MovieId" asp-route-slug="@movie.Slug">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>*@
 
 
 
